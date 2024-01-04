@@ -32,6 +32,4 @@ public class Base_class {
 	  driver.quit();;
   }
   
-  
-
 }
