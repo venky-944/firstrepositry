@@ -1,0 +1,101 @@
+package testng_package01;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+import org.testng.internal.RunInfo;
+
+import net.bytebuddy.implementation.bind.annotation.RuntimeType;
+
+public class NewTest {
+	
+	 
+  @Test(priority = 1)
+  public void f() {
+	  
+	  WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://demo.automationtesting.in/Alerts.html");
+		driver.manage().window().maximize();
+  }
+  @Test(priority = 2)
+  public void browser_lunch() {
+		
+		
+		 driver = new ChromeDriver();
+		
+		driver.get("https://demo.nopcommerce.com/");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+	}
+  
+  @Test(priority = 3)
+  public void lg(String user_mailname,String user_password) {
+		
+		// Click on the login 
+			
+			driver.findElement(By.xpath("//*[text()=\"Log in\"]")).click();
+					
+			// Fill the login details.
+//			 name="venkateshnasana7@gmail.com";
+//			 pass="Venky#123";
+					
+			driver.findElement(By.cssSelector("input[id=\"Email\"]")).sendKeys(user_mailname);
+			driver.findElement(By.cssSelector("input[id=\"Password\"]")).sendKeys(user_password);
+			driver.findElement(By.cssSelector("input[id=\"RememberMe\"]")).click();
+			driver.findElement(By.xpath("//button[contains(@class,\"login-button\")]")).click();
+		 
+	 }
+  @Test
+  public void rg() {
+		
+		String first_name="Nasana";
+		String last_name="Venkatesh";
+		String user_mail="venkateshnasana7@gmail.com";
+		String user_password="Venky#123";
+		String comapny_name="charani infotech";
+		
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		
+		
+		// Click on register button.
+		
+		driver.findElement(By.xpath("//*[text()=\"Register\"]")).click();
+		
+		// Fill the user details.
+		
+		driver.findElement(By.cssSelector("input#gender-male")).click();
+		driver.findElement(By.cssSelector("input#FirstName")).sendKeys(first_name);
+		driver.findElement(By.cssSelector("input#LastName")).sendKeys(last_name);
+		
+		WebElement day_ele=driver.findElement(By.cssSelector("select[name=\"DateOfBirthDay\"]"));
+		Select select_day=new Select(day_ele);
+		select_day.selectByIndex(13);
+		
+		WebElement month_ele=driver.findElement(By.cssSelector("select[name=\"DateOfBirthMonth\"]"));
+		Select select_month=new Select(month_ele);
+		select_month.selectByValue("8");
+		
+		WebElement year_ele=driver.findElement(By.cssSelector("select[name=\"DateOfBirthYear\"]"));
+		Select select_year=new Select(year_ele);
+		select_year.selectByVisibleText("1998");
+		
+		driver.findElement(By.cssSelector("input[name=\"Email\"]")).sendKeys(user_mail);
+		driver.findElement(By.xpath("//*[@id=\"Company\"]")).sendKeys(comapny_name);
+	
+		driver.findElement(By.xpath("//*[@id=\"Password\"]")).sendKeys(user_password);
+		driver.findElement(By.xpath("//*[@id=\"ConfirmPassword\"]")).sendKeys(user_password);
+		driver.findElement(By.xpath("//button[@id=\"register-button\"]")).click();
+		
+		// scroll down till end of the page
+		js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+		
+	}
+}

@@ -1,0 +1,19 @@
+package automation_practice_web;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class Home_page_cls {
+	
+	public WebDriver driver=new ChromeDriver();
+	
+	
+  @Test
+  public void verify_sliders() {
+	  
+	  driver.get("https://practice.automationtesting.in/");
+	  
+	  
+  }
+}

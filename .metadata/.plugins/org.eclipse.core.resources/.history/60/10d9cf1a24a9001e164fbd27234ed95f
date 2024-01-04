@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+		
+		
+		 <class name="automation_practice_web.Myaccount_Registration_cls">
+		  <methods>
+			<include name="registration()"/>
+			<!-- <include name="registration_invalid_email_id()"/>  
+			<include name="registration_empty_email_id()"/>
+			<include name="registration_empty_password()"/>
+			<include name="registration_empty_password_email_id()"/>-->
+		  </methods>
+	  </class>
+	  
+		 <class name="automation_practice_web.Myaccount_Login_cls">
+		  <methods>
+			<include name="login()"/>  
+		  </methods>
+	  </class>
+	  
+      <class name="automation_practice_web.Home_page_cls">
+		  <methods>
+			  <include name="verify_sliders()"/>
+			   <include name="verify_Arrival_navigation()"/> 
+			 <!--  <include name="verify_Arrivals_imgs_description()"/>
+			  <include name="verify_Arrivals_imgs_Reviwes()"/>
+			  <include name="verify_Arrivals_AddtoBasket()"/> -->
+			  
+		  </methods>
+	  </class> 
+	  
+	 
+	  
+	 
+	  
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

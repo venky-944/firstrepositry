@@ -1,0 +1,35 @@
+package automation_practice_web;
+
+import java.time.Duration;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+public class Myaccount_Registration_cls extends Base_class{
+	
+	@BeforeMethod
+	public void beforMethod() {
+		driver.findElement(By.xpath("//*[@id=\"menu-item-50\"]")).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	}
+	
+  @Test
+  public void registration() {
+	  driver.findElement(By.cssSelector("input[id=\"reg_email\"]")).sendKeys("venkatnasana644@gmail.com");
+	  driver.findElement(By.cssSelector("input[id=\"reg_password\"]")).sendKeys("Venky@1234");
+	  driver.findElement(By.cssSelector("input[name=\"register\"]")).click();
+  }
+  
+  @Test
+  
+  public void registration_invalid_email_id() {
+	  driver.findElement(By.cssSelector("input[id=\"reg_email\"]")).sendKeys("venkatnasa644");
+	  driver.findElement(By.cssSelector("input[id=\"reg_password\"]")).sendKeys("Venky@1234");
+	  driver.findElement(By.cssSelector("input[name=\"register\"]")).click();
+	  Alert a=driver.switchTo().alert();
+	  System.out.println(a.getText());
+	  
+  }
+}
